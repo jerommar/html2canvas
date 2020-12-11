@@ -69,7 +69,8 @@ const renderElement = async (element: HTMLElement, opts: Partial<Options>): Prom
         y: top,
         width: Math.ceil(width),
         height: Math.ceil(height),
-        id: instanceName
+        id: instanceName,
+        skipSvgRendering: false
     };
 
     const options: Options = {...defaultOptions, ...resourceOptions, ...opts};
@@ -123,6 +124,7 @@ const renderElement = async (element: HTMLElement, opts: Partial<Options>): Prom
         y: options.y,
         scrollX: options.scrollX,
         scrollY: options.scrollY,
+        skipSvgRendering: options.skipSvgRendering,
         width: options.width,
         height: options.height,
         windowWidth: options.windowWidth,

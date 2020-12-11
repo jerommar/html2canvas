@@ -56,6 +56,7 @@ export interface RenderOptions {
     windowWidth: number;
     windowHeight: number;
     cache: Cache;
+    skipSvgRendering: boolean;
 }
 
 const MASK_OFFSET = 10000;
@@ -282,7 +283,7 @@ export class CanvasRenderer {
             this.renderReplacedElement(container, curves, container.canvas);
         }
 
-        if (container instanceof SVGElementContainer) {
+        if (container instanceof SVGElementContainer && !this.options.skipSvgRendering) {
             try {
                 const image = await this.options.cache.match(container.svg);
                 this.renderReplacedElement(container, curves, image);
